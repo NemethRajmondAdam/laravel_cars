@@ -27,10 +27,11 @@ class ModelsSeeder extends Seeder
     {
         foreach (self::ITEMS as $key => $makers) {
             foreach ($makers as $item) {
-                $maker = Maker::where(['name' => $key]);
+                $maker = Maker::where(['name' => $key])->first();
                 $model = new Model();
                 $model->maker_id=$maker->id;
                 $model->name=$item;
+                $model->save();
             }
         }
         

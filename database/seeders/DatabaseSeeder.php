@@ -23,6 +23,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             MakersSeeder::class,
             FuelsSeeder::class,
+            BodiesSeeder::class,
+            ModelsSeeder::class,
         ]);
     }
 }

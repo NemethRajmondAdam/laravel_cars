@@ -2,24 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\BasicRequest;
-use App\Models\Body;
 use Illuminate\Http\Request;
 
-class BodyController extends Controller
+class VehicleController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
-    //use ValidationRules;
-
     public function index()
     {
-        $bodies = Body::all();
-        return view('bodies.index', compact('bodies'));
+        //
     }
 
     /**
@@ -29,7 +23,7 @@ class BodyController extends Controller
      */
     public function create()
     {
-        return view('bodies.create');
+        //
     }
 
     /**
@@ -38,13 +32,9 @@ class BodyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(BasicRequest $request)
+    public function store(Request $request)
     {
-        $body  = new Body();
-        $body->name = $request->input('name');
-        $body->save();
-
-        return redirect()->route('bodies.index')->with('success', "{$body->name} sikeresen létrehozva");
+        //
     }
 
     /**
@@ -66,9 +56,7 @@ class BodyController extends Controller
      */
     public function edit($id)
     {
-        $body = Body::find($id);
-        return view('bodies.edit', compact('body')); 
-    
+        //
     }
 
     /**
@@ -78,13 +66,9 @@ class BodyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(BasicRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        $body = Body::find($id);
-        $body->name = $request->input('name');
-        $body->save();
-
-        return redirect()->route('bodies.index')->with('success', "{$body->name} sikeresen módosítva");
+        //
     }
 
     /**
@@ -95,9 +79,6 @@ class BodyController extends Controller
      */
     public function destroy($id)
     {
-        $body = Body::find($id);
-        $body->delete();
-
-        return redirect()->route('bodies.index')->with('success', "{$body->name} sikeresen törölve");
+        //
     }
 }
