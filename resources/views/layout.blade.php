@@ -27,6 +27,7 @@
                     <li><a href="{{ route('makers.index') }}"><button>Gyártók</button></a></li>
                     <li><a href="{{ route('fuels.index') }}"><button>Üzemanyagok</button></a></li>
                     <li><a href="{{ route('bodies.index') }}"><button>Karosszériák</button></a></li>
+                    <li><a href="{{ route('vehicles.index') }}"><button>Járművek</button></a></li>
 
                 </ul>
             </nav>

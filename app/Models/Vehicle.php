@@ -11,4 +11,9 @@ class Vehicle extends Model
     public $timestamps = false;
 
     protected $fillable = ['name','logo'];
+
+    function model()
+    {
+        return $this->belongsTo(Model::class);
+    }
 }

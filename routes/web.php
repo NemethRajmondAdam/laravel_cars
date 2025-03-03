@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MakerController;
 use App\Http\Controllers\FuelController;
 use App\Http\Controllers\BodyController;
+use App\Http\Controllers\VehicleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,7 @@ use App\Http\Controllers\BodyController;
 Route::resource('makers',MakerController::class);
 Route::resource('fuels',FuelController::class);
 Route::resource('bodies',BodyController::class);
+Route::resource('vehicles',VehicleController::class);
 
 /*Route::get('/', function () {
     return view('welcome');

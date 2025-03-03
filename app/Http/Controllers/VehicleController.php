@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Vehicle;
 use Illuminate\Http\Request;
+use App\Models\Maker;
+use App\Models\Model;
+use App\Models\Fuel;
+use App\Models\Body;
 
 class VehicleController extends Controller
 {
@@ -13,7 +18,8 @@ class VehicleController extends Controller
      */
     public function index()
     {
-        //
+        $vehicles = Vehicle::all();
+        return view('vehicles.index', compact('vehicles'));
     }
 
     /**
@@ -23,7 +29,11 @@ class VehicleController extends Controller
      */
     public function create()
     {
-        //
+        $makers = Maker::all();
+        $models = Model::all();
+        $fuels = Fuel::all();
+        $bodies = Body::all();
+        return view('vehicles.create',compact('makers','models','fuels','bodies'));
     }
 
     /**
@@ -34,7 +44,16 @@ class VehicleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $vehicle  = new Vehicle();
+        $vehicle->VIN = $request->input('VIN');
+        $vehicle->license_plate = $request->input('license_plate');
+        $vehicle->maker_id = $request->input('maker_id');
+        $vehicle->model_id = $request->input('model_id');
+        $vehicle->body_id = $request->input('body_id');
+        $vehicle->fuel_id = $request->input('fuel_id');
+        $vehicle->save();
+
+        return redirect()->route('vehicles.index')->with('success', "{$vehicle->license_plate} sikeresen létrehozva");
     }
 
     /**
@@ -56,7 +75,8 @@ class VehicleController extends Controller
      */
     public function edit($id)
     {
-        //
+        $vehicle = Vehicle::find($id);
+        return view('vehicles.edit', compact('vehicle'));
     }
 
     /**
@@ -68,7 +88,12 @@ class VehicleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $vehicle  = Vehicle::find($id);
+        $vehicle->VIN = $request->input('VIN');
+        $vehicle->license_plate = $request->input('license_plate');
+        $vehicle->save();
+
+        return redirect()->route('vehicles.index')->with('success', "{$vehicle->license_plate} sikeresen módosítva");
     }
 
     /**
@@ -79,6 +104,9 @@ class VehicleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $vehicle  = Vehicle::find($id);
+        $vehicle->delete();
+
+        return redirect()->route('vehicles.index')->with('success', "{$vehicle->name} sikeresen törölve");
     }
 }
