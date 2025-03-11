@@ -16,7 +16,7 @@ use App\Http\Controllers\VehicleController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('/makers/{maker}/fetch-models', [MakerController::class, 'fetchModels'])->name('makers.fetch.models');
 Route::resource('makers',MakerController::class);
 Route::resource('fuels',FuelController::class);
 Route::resource('bodies',BodyController::class);

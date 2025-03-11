@@ -18,8 +18,12 @@ class VehicleController extends Controller
      */
     public function index()
     {
+        $makers = Maker::all();
+        $models = Model::all();
+        $fuels = Fuel::all();
+        $bodies = Body::all();
         $vehicles = Vehicle::all();
-        return view('vehicles.index', compact('vehicles'));
+        return view('vehicles.index', compact('vehicles','makers','models','fuels','bodies'));
     }
 
     /**
@@ -64,7 +68,7 @@ class VehicleController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -75,8 +79,12 @@ class VehicleController extends Controller
      */
     public function edit($id)
     {
+        $makers = Maker::all();
+        $models = Model::all();
+        $fuels = Fuel::all();
+        $bodies = Body::all();
         $vehicle = Vehicle::find($id);
-        return view('vehicles.edit', compact('vehicle'));
+        return view('vehicles.edit', compact('vehicle','makers','models','fuels','bodies'));
     }
 
     /**
@@ -91,6 +99,10 @@ class VehicleController extends Controller
         $vehicle  = Vehicle::find($id);
         $vehicle->VIN = $request->input('VIN');
         $vehicle->license_plate = $request->input('license_plate');
+        $vehicle->maker_id = $request->input('maker_id');
+        $vehicle->model_id = $request->input('model_id');
+        $vehicle->body_id = $request->input('body_id');
+        $vehicle->fuel_id = $request->input('fuel_id');
         $vehicle->save();
 
         return redirect()->route('vehicles.index')->with('success', "{$vehicle->license_plate} sikeresen módosítva");

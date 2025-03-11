@@ -14,12 +14,42 @@
         <br><br><br>
         
         @foreach($vehicles as $vehicle)
+        
             <table>
                 <tr>
                     <td><div class="col id">{{ $vehicle->id }}</div></td>
                     <td><div class="col">{{$vehicle->license_plate}}</div></td>
-                <td>
-                <div class="right">
+                    <td><div class="col">{{$vehicle->VIN}}</div></td>
+                <td><div class="col">
+                        @foreach($makers as $maker)
+                            @if($maker->id == $vehicle->maker_id)
+                                {{ $maker->name }}
+                            @endif
+                        @endforeach
+                    </div></td>
+                    <td><div class="col">
+                        @foreach($models as $model)
+                            @if($model->id == $vehicle->model_id)
+                                {{ $model->name }}
+                            @endif
+                        @endforeach
+                    </div></td>
+                    <td><div class="col">
+                        @foreach($bodies as $body)
+                            @if($body->id == $vehicle->body_id)
+                                {{ $body->name }}
+                            @endif
+                        @endforeach
+                    </div></td>
+                        <td><div class="col">
+                        @foreach($fuels as $fuel)
+                            @if($fuel->id == $vehicle->fuel_id)
+                                {{ $fuel->name }}
+                            @endif
+                        @endforeach
+                    </div></td>
+                    <td>                
+                        <div class="right">
 
                         <div class="col">
                             <a href="{{ route('vehicles.edit', $vehicle->id) }}"><button>Módosít</button></a>
@@ -31,7 +61,8 @@
                                 <button type="submit" name="btn-del-vehicle">Töröl</button>
                             </form>
                         </div>
-                </div>
+                        </div></td>
+
                 </td>
                 </tr>
             </table>
