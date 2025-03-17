@@ -100,7 +100,6 @@ class MakerController extends Controller
 	{
 		$entity = Maker::find($entityId);
 		$result['data'] = $entity->models;
-		$result['logo'] = $this->getLogo($entity);
 
 		return response()->json($result);
 	}

@@ -31,16 +31,6 @@ $(document).ready(function() {
                         $("#select-model").append(option);
                     }
                 }
-                // Changing logo when exists
-                len = 0;
-                if (response['logo'] != null) {
-                    len = response['logo'].length;
-                }
-                if (len > 0) {
-                    $("#logo").attr('src', response['logo']);
-                } else {
-                    $("#logo").attr('src', '');
-                }
             }
         });
     }); 
